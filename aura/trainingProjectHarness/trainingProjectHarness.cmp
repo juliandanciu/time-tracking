@@ -1,0 +1,43 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="TimesheetController">
+    <aura:handler name="timesheetInfo" event="c:timesheetInfoEvent" action="{!c.handleTimesheetInfo}"/>
+    <aura:handler name="renderWorklogCreation" event="c:renderWorklogCreationEvent" action="{!c.handleRenderWorklogCreation}"/>
+    <aura:handler name="renderWorklogEdit" event="c:renderWorklogEditEvent" action="{!c.handleRenderWorklogEditEvent}"/>
+    <aura:handler name="appendNewWorklog" event="c:appendNewWorklogEvent" action="{!c.handleAppendNewWorklogEvent}"/>
+    <aura:handler name="selectWorklog" event="c:selectWorklogEvent" action="{!c.handleSelectWorklogEvent}"/>
+    <aura:handler name="selectAllWorklogs" event="c:selectAllWorklogsEvent" action="{!c.handleSelectAllWorklogsEvent}"/>
+    <aura:handler name="deleteUpdate" event="c:deleteUpdateEvent" action="{!c.handleDeleteUpdateEvent}"/>
+    <aura:handler name="sendEditWorklog" event="c:sendEditWorklogEvent" action="{!c.handleSendEditWorklogEvent}"/>
+    <aura:handler name="updateEditedWorklog" event="c:updateEditedWorklogEvent" action="{!c.handleUpdateEditedWorklog}"/>
+    
+    
+    
+    
+    
+    
+    <aura:attribute name="percentage" type="Double" default="0"/>
+    <aura:attribute name="parentTimesheet" type="Timesheet__c"/>
+    <aura:attribute name="childWorklogs" type="Worklog__c[]"/>
+    <aura:attribute name="renderWorklogCreation" type="Boolean" default="false"/>
+    <aura:attribute name="renderWorklogEdit" type="Boolean" default="false"/>
+    <aura:attribute name="renderAreYouSure" type="Boolean" default="false"/>
+    <aura:attribute name="selectedWorklogs" type="Id[]"/>
+    <aura:attribute name="editWorklog" type="Worklog__c"/>
+    <aura:attribute name="selectAll" type="Boolean" default="false"/>
+         
+    <c:timesheetSelect />
+    
+    <aura:if isTrue="{!v.parentTimesheet != NULL}">
+        <c:displayTable parentTimesheet="{!v.parentTimesheet}" childWorklogs="{!v.childWorklogs}" percentage="{!v.percentage}" selectedWorklogs="{!v.selectedWorklogs}" selectAll="{!v.selectAll}" renderAreYouSure="{!v.renderAreYouSure}"/>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.renderWorklogCreation}">
+    	<c:worklogCreation parentTimesheet="{!v.parentTimesheet}" />
+    </aura:if>
+    
+    <aura:if isTrue="{!v.renderWorklogEdit}">
+        <c:worklogEdit parentTimesheet="{!v.parentTimesheet}" editWorklog="{!v.editWorklog}"/>
+    </aura:if>
+    
+    
+    
+</aura:component>

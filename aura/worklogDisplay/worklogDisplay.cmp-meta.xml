@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuraDefinitionBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>41.0</apiVersion>
+    <description>If a timesheet was selected, this new section will appear displaying a table of worklogs on the timesheet and a button for creating new worklogs if the timesheet is not already submitted.</description>
+</AuraDefinitionBundle>

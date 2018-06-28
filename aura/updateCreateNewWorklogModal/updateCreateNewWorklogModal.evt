@@ -1,0 +1,6 @@
+<aura:event type="COMPONENT">
+	<aura:attribute name="truthValue"
+                    type="Boolean"/>
+    
+    
+</aura:event>

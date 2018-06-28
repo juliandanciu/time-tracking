@@ -1,0 +1,95 @@
+<aura:component controller="TimesheetController" >
+<!-- initSetTimesheetStartDate.cmp -->
+	
+    <aura:registerEvent name="timesheetinfo" type="c:timesheetInfoEvent" />
+    <aura:handler event="c:sendNewWorklogEvent" action="{!c.handleSendNewWorklogEvent}"/>
+    <!-- maybe a form?? -->
+    <aura:attribute name="newWorklog"
+                    type="Worklog__c"/>
+    
+    <aura:attribute name="returnedTimesheet"
+                    type="Timesheet__c"/>
+    
+    <aura:attribute name="timesheetWorklogs"
+                   type="Worklog__c[]"/>
+    
+    <aura:attribute name="timesheet"
+                    type="Timesheet__c"
+                    default="{'sbjectType': 'Timesheet__c',
+                             'Start_Date__c' : ''}"/>
+    
+    <form>
+        <ui:inputDate aura:id="startDate" 
+                      label="Set Timesheet Start Date"
+                      value="{!v.timesheet.Start_Date__c}"
+                      displayDatePicker="true"/>
+        <br></br>
+        <lightning:button variant="brand"
+                          label="Submit"
+                          onclick="{!c.queryForTimesheet}"/>
+                          
+                          
+    
+        
+           
+    </form>
+    <br></br>
+    
+    <aura:if isTrue="{!v.returnedTimesheet != NULL}">
+        
+        
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+    	<thead>
+        	<tr class="slds-text-title_caps">
+            	<th scope="col">
+                	<div class="slds-truncate" title="Timesheet Number">Timesheet Number</div>
+                </th>
+                <th scope="col">
+                	<div class="slds-truncate" title="Start Date">Start Date</div>
+                </th>
+                <th scope="col">
+                	<div class="slds-truncate" title="User">User</div>
+                </th>
+                <th scope="col">
+                	<div class="slds-truncate" title="Status">Status</div>
+                </th>
+            </tr>
+        </thead>
+        <!-- consider the iterator -->
+        <tbody>
+        	<tr>
+            	<th scope="row" data-label="Worklog Number">
+                	<div class="slds-truncate" title="{!v.returnedTimesheet.Name}">{!v.returnedTimesheet.Name}</div>
+                </th>
+                <td data-label="Start Date">
+        			<div class="slds-truncate" title="{!v.returnedTimesheet.Start_Date__c}">{!v.returnedTimesheet.Start_Date__c}</div>
+      			</td>
+                <td data-label="User">
+        			<div class="slds-truncate" title="{!v.returnedTimesheet.User__r.Name}">{!v.returnedTimesheet.User__r.Name}</div>
+      			</td>
+                <td data-label="Status">
+        			<div class="slds-truncate" title="{!v.returnedTimesheet.Status__c}">{!v.returnedTimesheet.Status__c}</div>
+      			</td>
+            </tr>
+        </tbody>
+    
+    
+    
+    
+    </table>
+    <br></br>
+    
+    <!-- aura if statment for the Submit Timesheet Button if -->
+    <div><aura:if isTrue="{!v.returnedTimesheet.Status__c == 'New'}">
+    	 	<lightning:button variant="brand" label="Submit Timesheet" onclick="{!c.handleClickSubmitTimesheet}" />
+        	
+        
+        </aura:if></div>
+    <c:worklogDisplay newWorklog="{!v.newWorklog}"
+                      timesheetWorklogs="{!v.timesheetWorklogs}"
+                      timesheetStatus="{!v.returnedTimesheet.Status__c}"
+                      returnedTimesheet="{!v.returnedTimesheet}"/>
+        
+        
+    </aura:if>
+</aura:component>

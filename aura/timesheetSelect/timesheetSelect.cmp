@@ -1,0 +1,18 @@
+<aura:component controller="TimesheetController" >
+    <aura:registerEvent name="timesheetInfo" type="c:timesheetInfoEvent" /> 
+    
+    
+	
+    
+    <lightning:card variant="narrow">
+        <aura:set attribute="title">
+            Set Timesheet Start Date
+        </aura:set>
+        <form>
+        	<ui:inputDate aura:id="startDate"  displayDatePicker="true"/>
+            <lightning:button variant="brand" label="Submit" onclick="{!c.queryForTimesheet}"/>
+    	</form>
+    </lightning:card>
+    
+    
+</aura:component>

@@ -1,0 +1,7 @@
+<aura:component >
+	<div class="slds-progress-bar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="79" role="progressbar">
+  		<span class="slds-progress-bar__value" style="width: 25%;">
+    		<span class="slds-assistive-text">Progress: 79%</span>
+  		</span>
+	</div>
+</aura:component>

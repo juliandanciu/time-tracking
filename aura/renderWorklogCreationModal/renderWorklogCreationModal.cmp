@@ -1,0 +1,13 @@
+<!-- renderWorklogCreationModal.cmp -->
+<aura:component >
+	<aura:attribute name="render"
+                    type="String"/>
+    
+    
+    <aura:if isTrue="{!v.render == 'true'}">
+        <c:worklogCreation />
+    <aura:set attribute="else"> </aura:set>
+  </aura:if> 
+ 
+    
+</aura:component>

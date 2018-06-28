@@ -1,0 +1,79 @@
+<!-- worklogDisplay.cmp -->   
+<aura:component >
+    <aura:attribute name="newWorklog"
+                    type="Worklog__c"/>
+    <aura:attribute name="timesheetStatus" type="String" />
+    <aura:attribute name="timesheetWorklogs" type="Worklog__c[]"/>
+    <aura:attribute name="returnedTimesheet" type="Timesheet__c"/>
+    
+    
+    
+    <aura:if isTrue="{!v.timesheetWorklogs != NULL}">
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+    	<thead>
+        	<tr class="slds-text-title_caps">
+            	<th scope="col">
+                	<div class="slds-truncate" title="Worklog Number">Worklog Number</div>
+                </th>
+                <th scope="col">
+                	<div class="slds-truncate" title="Project Name">Project Name</div>
+                </th>
+                <th scope="col">
+                	<div class="slds-truncate" title="Start Time">Start Time</div>
+                </th>
+                <th scope="col">
+                	<div class="slds-truncate" title="End Time">End Time</div>
+                </th>
+                <th scope="col">
+                	<div class="slds-truncate" title="Description">Description</div>
+                </th>
+                <th scope="col">
+                	<div class="slds-truncate" title="Status">Status</div>
+                </th>
+            </tr>
+        </thead>
+        
+        <tbody>
+        <aura:iteration items="{!v.timesheetWorklogs}"
+                        var="worklog">
+        	<tr>
+            	<th scope="row" data-label="Worklog Number">
+                	<div class="slds-truncate" title="{!worklog.Name}">{!worklog.Name}</div>
+                </th>
+                <td data-label="Project Name">
+        			<div class="slds-truncate" title="{!worklog.Project__r.Name}">{!worklog.Project__r.Name}</div>
+      			</td>
+                <td data-label="Start Time">
+        			<div class="slds-truncate" title="{!worklog.Start_Time__c}">{!worklog.Start_Time__c}</div>
+      			</td>
+                <td data-label="End Time">
+        			<div class="slds-truncate" title="{!worklog.End_Time__c}">{!worklog.End_Time__c}</div>
+      			</td>
+                <td data-label="Description">
+        			<div class="slds-truncate" title="{!worklog.Description__c}">{!worklog.Description__c}</div>
+      			</td>
+                <td data-label="Status">
+        			<div class="slds-truncate" title="{!worklog.Status__c}">{!worklog.Status__c}</div>
+      			</td>
+            </tr>
+        	
+        
+        </aura:iteration>
+        
+        
+        	
+        </tbody>
+    </table>
+    
+    <aura:set attribute="else">
+      <div class="slds-text-title_caps">There are no worklogs for this timesheet.</div>
+    </aura:set>
+    </aura:if>
+    
+    
+    <aura:if isTrue="{!v.timesheetStatus != 'Submitted'}">
+       <lightning:button variant="brand" label="Create New Worklog" onclick="{!c.clickCreateNewWorklog}" />
+    </aura:if>
+    
+    
+</aura:component>

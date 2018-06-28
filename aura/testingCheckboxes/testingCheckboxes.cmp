@@ -1,0 +1,6 @@
+<aura:component >
+    <h2>Hello World, check this box</h2>
+    
+    <lightning:input name="myCheckbox" label="" type="checkbox" onchange="{!c.onChange1}" /> 
+    <!--<lightning:input type="checkbox" label="Red" name="red" checked="true"/> -->
+</aura:component>

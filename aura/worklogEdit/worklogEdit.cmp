@@ -1,0 +1,39 @@
+<!-- worklogEdit -->
+<aura:component controller="WorklogController" >
+	<aura:attribute name="parentTimesheet" type="Timesheet__c"/>
+    <aura:attribute name="editWorklog" type="Worklog__c"/>
+    
+	<aura:registerEvent name="renderWorklogEdit" type="c:renderWorklogEditEvent"/>
+	<aura:registerEvent name="updateEditedWorklog" type="c:updateEditedWorklogEvent"/>    
+    
+    <div class="demo-only" style="height: 640px;">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+    		<div class="slds-modal__container">
+      			<header class="slds-modal__header">
+        			<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+          				<span class="slds-assistive-text">Close</span>
+        			</button>
+        			<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Existing Worklog</h2>
+      			</header>
+      			<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <form>
+                        <ui:inputDateTime aura:id="startTime" label="Worklog Start Time" displayDatePicker="true" value="{!v.editWorklog.Start_Time__c}"/>
+        				<ui:inputDateTime aura:id="endTime" label="Worklog End Time" displayDatePicker="true" value="{!v.editWorklog.End_Time__c}"/>
+                        <ui:inputText aura:id="projectName" label="Project Name" value="{!v.editWorklog.Project__r.Name}"/>
+                        <ui:inputText aura:id="description" label="Description" value="{!v.editWorklog.Description__c}"/>
+                    </form>
+        		</div>
+      			<footer class="slds-modal__footer">
+        			<lightning:button class="slds-button slds-button_neutral" onclick="{!c.clickCancel}">Cancel</lightning:button>
+        			<lightning:button value="{!v.editWorklog}" class="slds-button slds-button_brand" onclick="{!c.clickSave}">Save</lightning:button>
+      			</footer>
+        		</div>
+  		</section>
+  		<div class="slds-backdrop slds-backdrop_open"></div>
+        
+	</div>
+    
+    
+    
+    
+</aura:component>

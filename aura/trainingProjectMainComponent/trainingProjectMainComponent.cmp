@@ -1,0 +1,23 @@
+<aura:component >
+	<!-- trainingProjectMainComponent.cmp -->
+    
+    <aura:handler name="render" event="c:myEvent" action="{!c.handleRenderWorklogCreationModal}"/>
+    <aura:handler name="timesheetinfo" event="c:timesheetInfoEvent" action="{!c.handleTimesheetInfo}"/>
+    <aura:handler name="sendNewWorklog" event="c:sendNewWorklogEvent" action="{!c.handleSendNewWorklogEvent}"/>
+    
+    <aura:attribute name="newWorklog" type="Worklog__c"/> 
+    <aura:attribute name="renderWorklogCreationModal" type="Boolean"/>
+    <aura:attribute name="renderSetTimesheetStartDateModal" type="Boolean"/>
+    <aura:attribute name="returnedtimesheet" type="String"/>
+    
+    <h1>This is the Highest Level Component</h1>
+    
+    
+    <div><c:initSetTimesheetStartDate newWorklog="{!v.newWorklog}" /> </div>
+	
+    <div><aura:if isTrue="{!v.renderWorklogCreationModal}">
+            <c:worklogCreation timesheet="{!v.returnedtimesheet}" />
+        	
+        
+        </aura:if></div>
+</aura:component>

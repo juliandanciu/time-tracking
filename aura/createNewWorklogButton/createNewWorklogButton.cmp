@@ -1,0 +1,12 @@
+<!-- createNewWorklogButton -->
+<aura:component >
+    <aura:attribute name="returnedTimesheet" type="Timesheet__c"/>
+    <aura:registerEvent name="render" type="c:myEvent" />
+	<lightning:button variant="brand"
+                              label="Create New Worklog"
+                              onclick="{!c.clickCreateNewWorklog}" />
+    	
+    
+<!-- on click i want to render the component that displays the worklog button -->     
+    
+</aura:component>

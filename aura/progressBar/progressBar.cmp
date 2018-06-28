@@ -1,0 +1,15 @@
+<aura:component >
+    <aura:attribute name="percentage" type="Double" default="0"/>
+    
+    <lightning:card variant="narrow">
+        <aura:set attribute="title">
+            <lightning:formattedText value="Total hours: " />
+    		<lightning:formattedNumber value="{!v.percentage * 0.40}"/>
+        </aura:set>
+        <form>
+        	<lightning:progressBar value="{!v.percentage}" variant="circular" size="large"/>
+    	</form>
+    </lightning:card>
+    
+    
+</aura:component>

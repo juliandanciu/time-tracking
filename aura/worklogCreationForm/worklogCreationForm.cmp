@@ -1,0 +1,20 @@
+<aura:component >
+	<aura:attribute name="worklogstarttime"
+                    type="Datetime"/>
+    <div>
+    <form>
+        <ui:inputDateTime label="Worklog Start Time"
+                      displayDatePicker="true"/><br></br>
+        <ui:inputDateTime label="Worklog End Time"
+                      displayDatePicker="true"/><br></br>
+        <ui:inputText label="Project Name"/><br></br>
+        <ui:inputText label="Description"/><br></br>
+        
+        
+        
+                          
+                          
+        
+    </form>
+    </div>
+</aura:component>
