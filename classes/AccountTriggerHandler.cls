@@ -8,9 +8,9 @@ public class AccountTriggerHandler {
     
     	for(Account acct : triggerOld){
         	for(Project__c proj : childProjects){
-            	if(proj.Account__c == acct.Id){
-                	acct.addError('Cannot delete account with child projects!');
-            	}
+            		if(proj.Account__c == acct.Id){
+                		acct.addError('Cannot delete account with child projects!');
+            		}
         	}
     	}
     }
